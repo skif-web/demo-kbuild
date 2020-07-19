@@ -1,0 +1,23 @@
+choice SELECT_DESTINATION
+    prompt "Select data destination"
+    default DESTINATION_TTY
+
+config SELECT_DESTINATION_TTY
+    bool "show data in console"
+config SELECT_DESTINATION_FILE
+    bool "save data to file"
+endchoice
+
+
+config SELECT_DESTINATION_FILE_FILENAME
+    string "destination file"
+    depends on SELECT_DESTINATION_FILE
+    default "last.log"
+    help
+      Write destination file with relative or full path
+
+config SHOW_ONLY_CURRENT_USER
+    bool "show data only for current user"
+    default y
+    help
+      script will get data only for currewnt user
